@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { getPosts } from "../services";
 import { PostCard } from "../components";
+import { motion } from "framer-motion";
 
 export default function Home({ posts }) {
   console.log(posts);
@@ -13,13 +14,18 @@ export default function Home({ posts }) {
       </Head>
 
       <div className="grid grid-cols-1 gap-4 px-6">
-        <h1 className="text-5xl font-semibold mb-8 leading-relaxed lg:text-7xl lg:w-3/4 lg:float-left">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="text-5xl font-semibold mb-8 leading-relaxed lg:text-7xl lg:w-3/4 lg:float-left"
+        >
           My Weekly{" "}
           <span className="text-green-500 text-transparent bg-clip-text bg-gradient-to-bl from-green-500 to-blue-900">
             Dev
           </span>{" "}
           Blog
-        </h1>
+        </motion.h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {posts.map((post) => (
             <PostCard post={post.node} key={post.node.title} />
