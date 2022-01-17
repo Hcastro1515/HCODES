@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import moment from "moment";
+import Image from 'next/image'
 import { motion } from "framer-motion";
+import { grpahCMSImageLoader } from '../utils';
 
 const PostCard = ({ post }) => {
   console.log(post);
@@ -20,15 +22,21 @@ const PostCard = ({ post }) => {
     >
       <div className="post-card flex flex-col rounded overflow-hidden lg:w-96 mb-4">
         <div className="container h-auto">
-          <img
-            className="bg-contain w-full h-full"
-            src={post.featuredImage.url}
-            alt={post.title}
-          />
+          
+        <Image 
+          unoptimized
+          loader={grpahCMSImageLoader}
+          className=""
+          src={post.featuredImage.url}
+          alt={post.title}
+          height="650px"
+          width="650px"
+        />
+        
         </div>
 
         <div className=" rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-5">
-          <p className="text-gray-600 my-3">
+          <p className="text-gray-600 mb-3">
             {moment(post.createdAt).format("MMM DD, YYYY")}
           </p>
           <h1 className=" text-2xl  font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-bl from-green-500 to-blue-900 hover:cursor-pointer hover:text-black transition-colors ease">

@@ -18,12 +18,12 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" passHref>
             <span className="link-underline link-underline-black cursor-pointer  text-black mr-4">
               Home
             </span>
           </Link>
-          <Link href="/about">
+          <Link href="/about" passHref>
             <span className="link-underline link-underline-black cursor-pointer  text-black mr-4">
               About
             </span>

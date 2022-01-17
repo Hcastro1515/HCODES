@@ -4,6 +4,7 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Image } from "next/image";
 
 const PostDetail = ({ post }) => {
+  const content = post.content.raw.children; 
   return (
     <div className="lg:p-8 pb-12 mb-8 lg:max-w-4xl m-auto">
       <div className="px-4 lg:px-8">
@@ -22,7 +23,7 @@ const PostDetail = ({ post }) => {
         </div>
 
         <RichText
-          content={post.content.raw.children}
+          content={content}
           renderers={{
             img: ({ src, altText, height, width }) => (
               <Image
