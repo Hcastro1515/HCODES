@@ -30,7 +30,7 @@ const PostCard = ({ post }) => {
         </div>
 
         <div className=" rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-5">
-          <p className="text-gray-600 mb-3">
+          <p className="text-gray-600 my-3">
             {moment(post.createdAt).format("MMM DD, YYYY")}
           </p>
           <h1 className=" text-2xl  font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-bl from-green-500 to-blue-900 hover:cursor-pointer hover:text-black transition-colors ease">
