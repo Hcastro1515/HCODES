@@ -4,7 +4,7 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Image } from "next/image";
 
 const PostDetail = ({ post }) => {
-  const content = post.content.raw.children; 
+  const content = post.content.raw.children;
   return (
     <div className="lg:p-8 pb-12 mb-8 lg:max-w-4xl m-auto">
       <div className="px-4 lg:px-8">
@@ -32,7 +32,6 @@ const PostDetail = ({ post }) => {
                 height={height}
                 width={width}
                 objectFit="fill"
-
               />
             ),
             h1: ({ children }) => (
@@ -48,11 +47,7 @@ const PostDetail = ({ post }) => {
               <h1 className="text-lg font-semibold mb-4">{children}</h1>
             ),
             p: ({ children }) => <p className="mb-8">{children}</p>,
-            ul: ({ children }) => (
-              <ul className="ml-4" className="mb-5">
-                {children}
-              </ul>
-            ),
+            ul: ({ children }) => <ul className="ml-4 mb-5">{children}</ul>,
             li: ({ children }) => (
               <li className="list-disc ml-8">{children}</li>
             ),
