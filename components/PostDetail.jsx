@@ -1,72 +1,11 @@
 import React from "react";
 import moment from "moment";
+import { RichText } from "@graphcms/rich-text-react-renderer";
+import { Image } from "next/image";
 
 const PostDetail = ({ post }) => {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-    }
-
-    switch (type) {
-      case "heading-one":
-        <h3 key={index} className="text-xl font-semibold mb-4">
-          {modifiedText.map((item, i) => (
-            <React.Fragment key={i}>{item}</React.Fragment>
-          ))}
-        </h3>;
-      case "heading-three":
-        return (
-          <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        );
-      case "paragraph":
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        );
-      case "heading-four":
-        return (
-          <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        );
-      case "image":
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
-
   return (
-    <div className=" lg:p-8 pb-12 mb-8 lg:max-w-4xl m-auto">
+    <div className="lg:p-8 pb-12 mb-8 lg:max-w-4xl m-auto">
       <div className="px-4 lg:px-8">
         <h1 className="mb-8 text-4xl font-semibold">{post.title}</h1>
 
@@ -74,7 +13,7 @@ const PostDetail = ({ post }) => {
           <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
         </p>
 
-        <div className="mb-12 image-container">
+        <div className="sm:mb-6 md:mb-12 image-container">
           <img
             src={post.featuredImage.url}
             alt={post.title}
@@ -82,14 +21,42 @@ const PostDetail = ({ post }) => {
           />
         </div>
 
-        {console.log(post.content.raw)}
-        {post.content.raw.children.map((typeObj, index) => {
-          const children = typeObj.children.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item)
-          );
+        <RichText
+          content={post.content.raw.children}
+          renderers={{
+            img: ({ src, altText, height, width }) => (
+              <Image
+                src={src}
+                alt={altText}
+                height={height}
+                width={width}
+                objectFit="fill"
 
-          return getContentFragment(index, children, typeObj, typeObj.type);
-        })}
+              />
+            ),
+            h1: ({ children }) => (
+              <h1 className="text-3xl font-semibold mb-4">{children}</h1>
+            ),
+            h2: ({ children }) => (
+              <h1 className="text-1xl font-semibold mb-4">{children}</h1>
+            ),
+            h3: ({ children }) => (
+              <h1 className="text-xl font-semibold mb-4">{children}</h1>
+            ),
+            h4: ({ children }) => (
+              <h1 className="text-lg font-semibold mb-4">{children}</h1>
+            ),
+            p: ({ children }) => <p className="mb-8">{children}</p>,
+            ul: ({ children }) => (
+              <ul className="ml-4" className="mb-5">
+                {children}
+              </ul>
+            ),
+            li: ({ children }) => (
+              <li className="list-disc ml-8">{children}</li>
+            ),
+          }}
+        />
       </div>
     </div>
   );

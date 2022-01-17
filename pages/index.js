@@ -4,6 +4,12 @@ import { PostCard } from "../components";
 import { motion } from "framer-motion";
 
 export default function Home({ posts }) {
+
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   console.log(posts);
   return (
     <div className="container mx-auto px-6 mb-8">
@@ -28,7 +34,14 @@ export default function Home({ posts }) {
         </motion.h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {posts.map((post) => (
-            <PostCard post={post.node} key={post.node.title} />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1,  }}
+              transition={{ duration: 2 }}
+              variants={variants}
+            >
+              <PostCard post={post.node} key={post.node.title} />
+            </motion.div>
           ))}
         </div>
       </div>
