@@ -10,7 +10,7 @@ export default function Home({ posts }) {
     visible: { opacity: 1 },
   };
 
-  console.log(posts);
+  
   return (
     <div className="container mx-auto px-6 mb-8">
       <Head>
@@ -39,6 +39,7 @@ export default function Home({ posts }) {
               animate={{ opacity: 1,  }}
               transition={{ duration: 2 }}
               variants={variants}
+              key={post.node.title}
             >
               <PostCard post={post.node} key={post.node.title} />
             </motion.div>

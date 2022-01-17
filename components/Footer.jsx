@@ -26,16 +26,25 @@ const Footer = () => {
         <p>Follow Me On Social Media</p>
 
         <div className="grid grid-cols-3 gap-5 mt-4">
-          <a href="https://twitter.com/HCODES15" target="_blank">
+          <a
+            href="https://twitter.com/HCODES15"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FontAwesomeIcon icon={faTwitter} height={20} width={20} />
           </a>
           <a
             href="https://www.linkedin.com/in/hector-castro-20b538163/"
             target="_blank"
+            rel="noreferrer"
           >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="https://github.com/Hcastro1515" target="_blank">
+          <a
+            href="https://github.com/Hcastro1515"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </div>
