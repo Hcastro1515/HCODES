@@ -8,19 +8,23 @@ const Header = () => {
         <div className="md:float-left block">
           <Link href="/" passHref>
             <span className="cursor-pointer font-bold text-3xl text-black inline-block">
-              HC<span className="text-transparent bg-clip-text bg-gradient-to-bl from-green-500 to-blue-900 text-4xl">[OD]</span>ES
+              HC
+              <span className="text-transparent bg-clip-text bg-gradient-to-bl from-green-500 to-blue-900 text-4xl">
+                [OD]
+              </span>
+              ES
             </span>
           </Link>
         </div>
 
         <div className="flex items-center">
           <Link href="/">
-            <span className="cursor-pointer transition ease hover:text-green-500 duration-300 text-black mr-4">
+            <span className="link-underline link-underline-black cursor-pointer  text-black mr-4">
               Home
             </span>
           </Link>
           <Link href="/about">
-            <span className="cursor-pointer transition ease hover:text-green-500 duration-300 text-black ">
+            <span className="link-underline link-underline-black cursor-pointer  text-black mr-4">
               About
             </span>
           </Link>
